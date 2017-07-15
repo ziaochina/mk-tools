@@ -33,8 +33,8 @@ function buildIndex(appFolder) {
 					let content = fs.readFileSync(path.join(absoultePath, filename), 'utf-8')
 					if(/load[ ]*:[ ]*\([ ]*cb[ ]*\)/.test(content)){
 						console.log(path.join(absoultePath, filename))
-						console.log( content.match( /name[ ]*:[ ]*\"([^\"]+)\"/))
-						let appName = content.match( /name[ ]*:[ ]*\"([^\"]+)\"/)[1].replace(/[\/\.-]/g,'_')
+						console.log( content.match( /name[ ]*:[ ]*[\'\"]([^\"]+)[\'\"]/))
+						let appName = content.match( /name[ ]*:[ ]*[\'\"]([^\"]+)[\'\"]/)[1].replace(/[\/\.-]/g,'_')
 						apps.push({name:appName, path:absoultePath})
 					}
 					
@@ -106,7 +106,7 @@ function copy(appFolder, cb) {
 	var appName = path.basename(cwd)
 	if(fs.existsSync(path.join(cwd, 'index.js'))){
 		var content = fs.readFileSync(path.join(cwd, 'index.js'), 'utf-8')
-		appName =  content.match( /name[ ]*:[ ]*\"([^\"]+)\"/)[1].replace(/[\/\.]/g,'-') || appName
+		appName =  content.match( /name[ ]*:[ ]*[\'\"]([^\"]+)[\'\"]/)[1].replace(/[\/\.]/g,'-') || appName
 	}
 	
 	var dest = join(process.cwd(), 'src', 'apps', appName)
