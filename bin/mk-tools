@@ -1,0 +1,72 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const package = require('../package.json')
+const app = require('../lib/app/index')
+const website = require('../lib/website/index')
+const compile = require('../lib/compile/index')
+const clone = require('../lib/clone/index')
+
+program
+	.version(package.version)
+
+// mk app <app name>
+program
+	.command('app')
+	.option("-i, --init", "init")
+	.action(function (...args) {
+		if (typeof args[0] === 'string')
+			app(...args)
+		else
+			app('app-demo', ...args)
+	})
+
+// mk website <website name>
+program
+	.command('website')
+	.option("-i, --init", "init")
+	.action(function (...args) {
+		if (typeof args[0] === 'string')
+			website(...args)
+		else
+			website('website-demo', ...args)
+	})
+
+// mk compile
+program
+	.command('compile')
+	.action(function (...args) {
+		if (typeof args[0] === 'string')
+			compile(...args)
+		else
+			compile('', ...args)
+	})
+
+// mk clone mk-template-root
+program
+	.command('clone')
+	.action(function (...args) {
+		if( typeof args[0] !== 'string'){
+			console.log('please input app name')
+		}
+		else if (typeof args[1] === 'string')
+			clone(...args)
+		else
+			clone(args[0], args[0], ...args)
+	})
+
+
+program
+	.command('*')
+	.action(function (env) {
+		console.log('没有这个命令 "%s"', env)
+	})
+
+
+program.parse(process.argv)
+
+//捕获当前进程接收到的信号（如按下了 ctrl + c)
+process.on('SIGINT', function () {
+	program.runningCommand && program.runningCommand.kill('SIGKILL');
+	process.exit(0);
+})
