@@ -1,6 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import pug from 'pug'
 import vfs from 'vinyl-fs'
 import through from 'through2'
 import inquirer from 'inquirer'
