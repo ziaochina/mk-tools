@@ -33,6 +33,7 @@ function buildIndex(appFolder) {
 					let content = fs.readFileSync(path.join(absoultePath, filename), 'utf-8')
 					if(/load[ ]*:[ ]*\([ ]*cb[ ]*\)/.test(content)){
 						console.log(path.join(absoultePath, filename))
+						console.log( content.match( /name[ ]*:[ ]*\"([^\"]+)\"/))
 						let appName = content.match( /name[ ]*:[ ]*\"([^\"]+)\"/)[1].replace(/[\/\.-]/g,'_')
 						apps.push({name:appName, path:absoultePath})
 					}
