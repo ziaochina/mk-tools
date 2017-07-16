@@ -4,6 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var env = process.env.NODE_ENV
 var compress = process.env.COMPRESS
+var plugins = []
 
 plugins.push(new webpack.DefinePlugin({
     "process.env.NODE_ENV": JSON.stringify(env)
