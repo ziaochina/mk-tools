@@ -1,6 +1,6 @@
 {
   "name": "mk-tools",
-  "version": "0.0.13",
+  "version": "1.0.0",
   "description": "mk-tools",
   "bin": {
     "mk": "./bin/mk-tools"

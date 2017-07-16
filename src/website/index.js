@@ -43,6 +43,7 @@ function createWebsite(websiteName, dest) {
 			runCmd(which.sync(npm), ['install', 'react', 'react-dom', 'mk-meta-engine', 'mk-component', 'mk-utils', '--save'], function () {  
 				runCmd(which.sync(npm), [
 				'install',
+				'babel-cli',
 				'babel-core',
 				'babel-loader',
 				'babel-plugin-add-module-exports',
