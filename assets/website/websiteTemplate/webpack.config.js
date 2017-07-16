@@ -2,21 +2,21 @@ var webpack = require("webpack");
 var path = require("path");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+var env = process.env.NODE_ENV
+var compress = process.env.COMPRESS
 
-var plugins = [
-    new webpack.DefinePlugin({
-        "process.env.NODE_ENV": JSON.stringify('production')
-    })
-]
+plugins.push(new webpack.DefinePlugin({
+    "process.env.NODE_ENV": JSON.stringify(env)
+}))
 
-if (process.env.COMPRESS) {
+if (env === 'production' && compress) {
     plugins.push(
         new webpack.optimize.UglifyJsPlugin({
             compressor: {
                 warnings: false
             }
         })
-    );
+    )
 }
 
 plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor'))
@@ -80,11 +80,9 @@ module.exports = {
 
     devServer: {
         contentBase: './dist/',
-        hot: true,
         proxy: {
             '/v1/*': 'http://127.0.0.1:8000/'
-
         }
     },
     plugins: plugins
-};
+}
