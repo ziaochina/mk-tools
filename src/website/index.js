@@ -40,7 +40,7 @@ function createWebsite(websiteName, dest) {
 
 			var npm = findNpm()
 
-			runCmd(which.sync(npm), ['install', 'react', 'react-dom', 'mk-meta-engine', 'mk-component', 'mk-utils', '--save'], function () {  
+			runCmd(which.sync(npm), ['install', 'react', 'react-dom', 'mk-meta-engine', 'mk-component', 'mk-utils', 'moment', '--save'], function () {  
 				runCmd(which.sync(npm), [
 				'install',
 				'babel-cli',
