@@ -44,7 +44,10 @@ function buildIndex(appFolder) {
 	}
 
 	findApps(basePath)
-console.log(apps)
+	
+	//生成index.js
+
+	console.log(apps)
 	/*
 	import _src from '../index.app'
 	import _src_apps_about from '../apps/about/index.app'
@@ -84,6 +87,7 @@ Object.keys(mkComponents).forEach(key=>{
 	}
 	fs.writeFileSync(indexFilePath, indexContent)
 
+	//生成apps.js
 	var appLessContent = apps.map(
 		o => `@import "./${path.relative(path.join(basePath,'assets','styles'),path.join(o.path, 'style.less'))}";`).join('\r\n')
 
@@ -94,6 +98,23 @@ Object.keys(mkComponents).forEach(key=>{
 	}
 
 	fs.writeFileSync(appLessPath, appLessContent)
+
+	//生成mock.js
+	var mockContent = ''
+	apps.forEach(o=>{
+		let mockFilePath = path.join(o.path, 'mock.js')
+		if(fs.existsSync(mockFilePath)){
+			mockContent += `import "./${path.relative(basePath, mockFilePath)}` + '\r\n'
+		}
+	})
+
+	var mockPath = path.join(basePath,'mock.js')
+	var existsMock = fs.existsSync(mockPath)
+	if (existsMock) {
+		fs.unlinkSync(mockPath)
+	}
+
+	fs.writeFileSync(mockPath, mockContent)
 
 	console.log('OK!')
 }
