@@ -70,7 +70,7 @@ function runCmd(cmd, args, fn) {
   })
 }
 
-var npms = ['tnpm', 'cnpm', 'npm']
+var npms = ['npm']
 
 function findNpm() {
   for (var i = 0; i < npms.length; i++) {
