@@ -104,7 +104,7 @@ Object.keys(mkComponents).forEach(key=>{
 	apps.forEach(o=>{
 		let mockFilePath = path.join(o.path, 'mock.js')
 		if(fs.existsSync(mockFilePath)){
-			mockContent += `import "./${path.relative(basePath, mockFilePath)}` + '\r\n'
+			mockContent += `import "./${path.relative(basePath, mockFilePath)}"` + '\r\n'
 		}
 	})
 
