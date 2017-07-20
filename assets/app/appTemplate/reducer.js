@@ -5,6 +5,7 @@ import config from './config'
 class reducer {
     constructor(option) {
         this.metaReducer = option.metaReducer
+        this.config = config.current
     }
 
     init = (state, option) => {
