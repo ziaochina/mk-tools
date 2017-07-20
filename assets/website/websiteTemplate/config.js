@@ -6,8 +6,9 @@ function config(options) {
 	Object.assign(_options, options)
 
 	if (_options.apps) {
-		_options.apps.forEach(app => {
-			app.config({
+
+		Object.keys(_options.apps).forEach(key => {
+			_options.apps[key].config({
 				apps: _options.apps,
 				//webapi //正式网站应该有一个完整webapi对象，提供所有web请求函数
 			})

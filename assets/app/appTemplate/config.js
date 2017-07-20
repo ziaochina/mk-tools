@@ -1,4 +1,4 @@
-import webpai from './webapi'
+import webapi from './webapi'
 
 var _options = {
 	webapi
