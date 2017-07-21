@@ -1,23 +1,29 @@
 import { Toast, Notification, Modal } from 'mk-component'
 import { fetch } from 'mk-utils'
+import './mock.js' //脱离后台测试，启用mock，否则这行注释
 
-//import './mock.js' //启用mock
+var _options = {}
+
+//配置fetch
 fetch.config({
-	//mock:true, //启用mock
-	after:(response)=>{
-		if(response.result){
+	mock: true, //脱离后台测试，启用mock，否则这行注释
+
+	//fetch支持切面扩展（before,after），对restful api统一做返回值或者异常处理
+	after: (response) => {
+		if (response.result) {
 			return response.value
+		}
+		else {
+			Toast.error(response.error.message)
 		}
 	}
 })
-
-var _options = {}
 
 function config(options) {
 	Object.assign(_options, options)
 
 	if (_options.apps) {
-
+		//遍历website下所有app,并调用其config方法，默认传入apps参数，可自己根据需求修改
 		Object.keys(_options.apps).forEach(key => {
 			_options.apps[key].config({
 				apps: _options.apps,
@@ -26,13 +32,12 @@ function config(options) {
 		})
 	}
 
-	_options.targetDomId = 'app'
-	_options.startAppName = '***' //mk-app-root
-	//options.apps['mk-app-root'].config({defaultAppName:'app-demo'})
+	_options.targetDomId = 'app' //react render到目标dom
+	_options.startAppName = 'mk-app-root' //启动app名，需要根据实际情况配置
 
-	_options.toast = Toast
-	_options.notification = Notification
-	_options.modal = Modal
+	_options.toast = Toast //轻提示使用组件，mk-meta-engine使用
+	_options.notification = Notification //通知组件
+	_options.modal = Modal //模式弹窗组件
 	return _options
 }
 
