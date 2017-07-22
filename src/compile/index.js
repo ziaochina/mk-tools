@@ -92,6 +92,7 @@ Object.keys(mkComponents).forEach(key=>{
 		.replace('${define-apps}', defineAppsContent)
 		.replace('${regisiter-mk-component}', regisiterMKComponentContent)
 
+	console.log(indexContent)
 	var indexFilePath = path.join(basePath, 'index.js')
 
 	var existsIndex = fs.existsSync(indexFilePath)
