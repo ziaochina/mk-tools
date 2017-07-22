@@ -76,6 +76,7 @@ function buildIndex(appFolder) {
 	apps.map(o=>defineAppsContent+=`\t[${o.name}.name]:${o.name},\t\n`)
 	defineAppsContent += '}\r\n'
 	
+	console.log(defineAppsContent)
 	
 	var regisiterMKComponentContent = `
 import * as mkComponents from 'mk-component'
