@@ -61,6 +61,18 @@ function buildIndex(appFolder) {
 	}	
 	*/
 	var defineAppsContent = 'const apps = {\r\n'
+	defineAppsContent+= '\tconfig: (options) => {\r\n'
+	defineAppsContent+= '\tObject.keys(options).forEach(key => {\r\n'
+	defineAppsContent+= "\t\tconst reg = new RegExp(`^${key == '*' ? '.*' : key}$`) {\r\n"
+	defineAppsContent+= '\t\tObject.keys(apps).forEach(appName => { {\r\n'
+	defineAppsContent+= "\t\t\tif (appName != 'config') {\r\n"
+	defineAppsContent+= '\t\t\t\tif (reg.test(appName)) {\r\n'
+	defineAppsContent+= '\t\t\t\t\tapps[appName].config(options[key])\r\n'
+	defineAppsContent+= '\t\t\t\t}\r\n'
+	defineAppsContent+= '\t\t\t}\r\n'
+	defineAppsContent+= '\t\t})\r\n'
+	defineAppsContent+= '\t	})\r\n'
+	defineAppsContent+= '},\r\n'
 	apps.map(o=>defineAppsContent+=`\t[${o.name}.name]:${o.name},\t\n`)
 	defineAppsContent += '}\r\n'
 	
