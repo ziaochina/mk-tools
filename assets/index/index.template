@@ -5,8 +5,7 @@ ${import-apps}
 
 ${define-apps}
 
-config(myConfig({apps}))
-
+apps.config({ '*': { apps } })
+config(myConfig({ apps }))
 ${regisiter-mk-component}
-
 start()
