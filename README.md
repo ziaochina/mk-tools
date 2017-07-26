@@ -32,7 +32,9 @@ $ mk clone [app name, npmjs发布的应用， 可空]
 $ mk compile
 ```
 
-## 完整演示
+## 创建空Sever
+
+## 完整演示创建一个网站
 
 ```
 $ npm i -g mk-tools

@@ -6,11 +6,12 @@ const app = require('../lib/app/index')
 const website = require('../lib/website/index')
 const compile = require('../lib/compile/index')
 const clone = require('../lib/clone/index')
+const server = require('../lib/server/index')
 
 program
 	.version(package.version)
 
-// mk app <app name>
+// mk app [app name]
 program
 	.command('app')
 	.option("-i, --init", "init")
@@ -21,7 +22,7 @@ program
 			app('app-demo', ...args)
 	})
 
-// mk website <website name>
+// mk website [website name]
 program
 	.command('website')
 	.option("-i, --init", "init")
@@ -42,7 +43,7 @@ program
 			compile('', ...args)
 	})
 
-// mk clone mk-template-root
+// mk clone <app name>
 program
 	.command('clone')
 	.action(function (...args) {
@@ -55,6 +56,15 @@ program
 			clone(args[0], args[0], ...args)
 	})
 
+//mk server [server name]
+program
+	.command('server')
+	.action(function(...args){
+		if (typeof args[0] === 'string')
+			server(...args)
+		else
+			server('server-demo', ...args)
+	})
 
 program
 	.command('*')
