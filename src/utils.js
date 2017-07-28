@@ -29,3 +29,8 @@ export async function runCmd(cmd, args, cwd) {
         })
     })
 }
+
+
+export function trim(str) {
+    return str.replace(/(^\s*)|(\s*$)/g, "");
+}

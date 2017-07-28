@@ -45,7 +45,7 @@ program
 		}
 	})
 
-// mk clone <app name>
+// mk clone <app name> <targetPath>
 program
 	.command('clone')
 	.action(function (...args) {
