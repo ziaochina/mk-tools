@@ -45,7 +45,6 @@ $ mk clone <app name//npmjs发布的App或者Service> <targetPath //目标路径
 $ mk compile <'website' or 'server' //编译网站或者服务>
 ```
 
-## 创建Service
 
 ## 完整演示创建一个网站
 
@@ -55,6 +54,17 @@ $ mk website www
 $ cd www
 $ mk clone mk-app-root apps/
 $ mk compile website
-$ mk start
+$ npm start
 ```
 
+## 完整演示创建一个server
+
+
+```
+$ sudo npm i -g mk-tools
+$ mk server server
+$ cd server
+$ mk clone mk-server-login service/
+$ mk compile server
+$ node index.js
+```
