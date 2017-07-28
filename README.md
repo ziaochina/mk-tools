@@ -36,7 +36,7 @@ $ mk service [service name //service名称，可空,默认：“service-demo”]
 ## 克隆App
 
 ```
-$ mk clone <app name//npmjs发布的App或者Service> <targetPath //目标路径>
+$ mk clone <app name//npmjs发布的App或者Service> <targetPath //目标路径，路径如果以/结尾那么会在/后面加上app name>
 ```
 
 ## 编译
@@ -53,7 +53,7 @@ $ mk compile <'website' or 'server' //编译网站或者服务>
 $ sudo npm i -g mk-tools
 $ mk website www
 $ cd www
-$ mk clone mk-app-root apps/root
+$ mk clone mk-app-root apps/
 $ mk compile website
 $ mk start
 ```
