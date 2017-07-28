@@ -1,0 +1,5 @@
+{{each apps}}
+{{if $value.existsLess}}
+@import '{{$value.relaLessPath}}';
+{{/if}}
+{{/each}}

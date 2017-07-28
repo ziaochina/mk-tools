@@ -7,6 +7,7 @@ const website = require('../lib/website/index')
 const compile = require('../lib/compile/index')
 const clone = require('../lib/clone/index')
 const server = require('../lib/server/index')
+const service = require('../lib/service/index')
 
 program
 	.version(package.version)
@@ -37,10 +38,11 @@ program
 program
 	.command('compile')
 	.action(function (...args) {
-		if (typeof args[0] === 'string')
-			compile(...args)
-		else
-			compile('', ...args)
+		if( typeof args[0] !== 'string' || (args[0] != 'website' &&  args[0] != 'server')){
+			console.log('请输入编译参数，website or server;例如mk compile website')
+		}else{
+			compile(args[0], ...args)
+		}
 	})
 
 // mk clone <app name>
@@ -48,7 +50,7 @@ program
 	.command('clone')
 	.action(function (...args) {
 		if( typeof args[0] !== 'string'){
-			console.log('please input app name')
+			console.log('请输入app name或者service name')
 		}
 		else if (typeof args[1] === 'string')
 			clone(...args)
@@ -59,11 +61,22 @@ program
 //mk server [server name]
 program
 	.command('server')
+	.option("-i, --init", "init")
 	.action(function(...args){
 		if (typeof args[0] === 'string')
 			server(...args)
 		else
 			server('server-demo', ...args)
+	})
+
+program
+	.command('service')
+	.option("-i, --init", "init")
+	.action(function (...args) {
+		if (typeof args[0] === 'string')
+			service(...args)
+		else
+			service('service-demo', ...args)
 	})
 
 program

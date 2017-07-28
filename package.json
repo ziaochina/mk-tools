@@ -1,6 +1,6 @@
 {
   "name": "mk-tools",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "mk-tools",
   "bin": {
     "mk": "./bin/mk-tools"
@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/ziaochina/mk-tools#readme",
   "dependencies": {
+    "art-template": "^4.12.1",
     "commander": "^2.11.0",
-    "inquirer": "^3.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "through2": "^2.0.3",

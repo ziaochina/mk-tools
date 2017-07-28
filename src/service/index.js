@@ -7,15 +7,15 @@ import which from 'which'
 
 const { join, basename } = path
 
-export default function app(cmd, options) {
+export default function service(cmd, options) {
 
-    createApp(
+    createService(
         options.init ? (cmd || path.basename(process.cwd())) : cmd,
         options.init ? process.cwd() : join(process.cwd(), cmd)
     )
 
-    function createApp(appName, dest) {
-        var cwd = join(__dirname, '../../assets/app/template')
+    function createService(serviceName, dest) {
+        var cwd = join(__dirname, '../../assets/service/template')
         vfs.src(['**/*', '!node_modules/**/*'], { cwd: cwd, cwdbase: true, dot: true })
 
             .pipe(through.obj(function (file, enc, cb) {
@@ -30,12 +30,11 @@ export default function app(cmd, options) {
 
             .on('end', function () {
                 var replaceNameFiles = [
-                    path.join(dest, 'index.js'),
-                    path.join(dest, 'style.less'),
+                    path.join(dest, 'index.js')
                 ]
-                
+
                 replaceNameFiles.forEach(o => {
-                    fs.writeFileSync(o, fs.readFileSync(o, 'utf-8').replace(/\$\{appName\}/g, appName.split('/').pop()))
+                    fs.writeFileSync(o, fs.readFileSync(o, 'utf-8').replace(/\$\{serviceName\}/g, serviceName.split('/').pop()))
                 })
 
                 console.log('OK!')
@@ -43,4 +42,6 @@ export default function app(cmd, options) {
             })
             .resume();
     }
+
+
 }
