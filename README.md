@@ -5,43 +5,56 @@ mk命令
 ## 安装
 
 ```
-$ npm i -g mk-tools
+$ sudo npm i -g mk-tools
 ```
 
-## 创建空网站
+## 创建Website
 
 ```
-$ mk website [website name，可空]
+$ mk website [website name //网站名称，可空， 默认"website-demo"]
 ```
 
-## 创建应用
+## 创建App
 
 ```
-$ mk app [app name, 可空]
+$ mk app [app name //app名称，可空，默认"app-demo"]
 ```
 
-## 克隆应用
+
+## 创建空Sever
 
 ```
-$ mk clone [app name, npmjs发布的应用， 可空]
+$ mk server [server name //server名称，可空，默认"server-demo"]
+```
+
+## 创建Service
+
+```
+$ mk service [service name //service名称，可空,默认：“service-demo”]
+```
+
+## 克隆App
+
+```
+$ mk clone <app name//npmjs发布的App或者Service> <targetPath //目标路径>
 ```
 
 ## 编译
 
 ```
-$ mk compile
+$ mk compile <'website' or 'server' //编译网站或者服务>
 ```
 
-## 创建空Sever
+## 创建Service
 
 ## 完整演示创建一个网站
 
 ```
-$ npm i -g mk-tools
+$ sudo npm i -g mk-tools
 $ mk website www
 $ cd www
-$ mk clone mk-app-root root
-$ mk compile
+$ mk clone mk-app-root apps/root
+$ mk compile website
 $ mk start
 ```
 
