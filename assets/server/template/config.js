@@ -3,15 +3,32 @@
  * 
  */
 
-function config(options) { 
-	Object.assign(_options, options) 
-	return _options
-} 
+const config = ({ services }) => {
+    Object.assign(current.services, services)
+    return current
+}
 
-var _options = config.current = {
-    host: '0.0.0.0',  
-    port: 8000, 
-    apiRootUrl: '/v1'
-} 
+const current = {
+    host: "0.0.0.0",
+    port: 8000,
+    apiRootUrl: "/v1",
+    interceptors: [],
+    services: {
+        // referrenced service
+    },
+    configs: {
+        // serviceName: {}
+    },
+}
 
-module.exports = config
+function configServices(server) {
+    var { services, configs } = server;
+    Object.keys(services).filter(k => !!services[k].config).forEach(k => {
+        let curCfg = Object.assign({ server }, configs["*"], configs[k]);
+        services[k].config(curCfg);
+    })
+}
+
+module.exports = Object.assign(config, {
+    current,
+})
