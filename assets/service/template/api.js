@@ -1,6 +1,8 @@
-const ping = (dto) => dto
+const config = require("./config").current
+
+const ping = (dto) => true
 
 module.exports = {
-    ping
+    ping,
 }
 

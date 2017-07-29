@@ -1,10 +1,13 @@
 
-function config(options) { 
-	Object.assign(_options, options)  
-	return _options
-} 
+const config = (options) => {
+	Object.assign(current, options)
+	return current
+}
 
-var _options = config.current = { 
-} 
+const current = {
+	// myOptin: "initValue",
+}
 
-module.exports = config
+module.exports = Object.assign(config, {
+	current,
+})
