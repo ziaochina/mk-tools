@@ -4,11 +4,12 @@
  */
 
 const config = ({ services }) => {
-    Object.assign(current.services, services)
+    Object.assign(server.services, services)
+    configServices(server)
     return current
 }
 
-const current = {
+const server = {
     host: "0.0.0.0",
     port: 8000,
     apiRootUrl: "/v1",
@@ -29,6 +30,4 @@ function configServices(server) {
     })
 }
 
-module.exports = Object.assign(config, {
-    current,
-})
+module.exports = config

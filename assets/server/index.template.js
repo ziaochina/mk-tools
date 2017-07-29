@@ -6,7 +6,7 @@ const {{$value.name}} = require("./{{$value.relaPath}}")
 
 const services = {
 {{each services}}	
-    [{{$value.name}}.name]: {{$value.name}},
+    {{$value.name}},
 {{/each}}
 }
 
