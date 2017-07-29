@@ -9,8 +9,17 @@ class reducer {
     }
 
     init = (state, option) => {
-        const data = { data: {} }
+        const data = {
+            data: {
+                content: 'hello world'
+            }
+        }
         return this.metaReducer.init(state, data)
+    }
+
+    modifyContent = (state) => {
+        const content = this.metaReducer.gf(state, 'data.content')
+        return this.metaReducer.sf(state, 'data.content', content + '!')
     }
 }
 

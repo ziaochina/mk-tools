@@ -13,6 +13,10 @@ class action {
         this.injections = injections
         injections.reduce('init')
     }
+
+    btnClick = () => {
+        this.injections.reduce('modifyContent')
+    }
 }
 
 export default function creator(option) {

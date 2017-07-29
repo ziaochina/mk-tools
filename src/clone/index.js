@@ -9,18 +9,21 @@ const { join, basename } = path
 
 export default async function cloneApp(appName, targetPath) {
     targetPath = trim(targetPath)
-    if( targetPath.substr(targetPath.length - 1, 1) == '/' ){
-        targetPath = targetPath + appName
-    }
 
     var npm = findNpm()
-    await runCmd(which.sync(npm), ['install', appName, '--save'], process.cwd())
+    var apps = appName.split(',')
+    await runCmd(which.sync(npm), ['install', ...apps, '--save'], process.cwd())
 
-    cp(appName, targetPath)
+    apps.forEach(o => {
+        let p = targetPath
+        if (targetPath.substr(targetPath.length - 1, 1) == '/') {
+            p = targetPath + o
+        }
+        cp(o, p)
+    })
 
-    await runCmd(which.sync(npm), ['uninstall', appName], process.cwd())
+    await runCmd(which.sync(npm), ['uninstall', ...apps], process.cwd())
 }
-
 
 
 function cp(appName, targetPath) {

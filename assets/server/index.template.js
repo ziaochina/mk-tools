@@ -5,7 +5,9 @@ const {{$value.name}} = require("./{{$value.relaPath}}")
 {{/each}}
 
 const services = {
-{{each services}}	[{{$value.name}}.name]: {{$value.name}},{{/each}}
+{{each services}}	
+    [{{$value.name}}.name]: {{$value.name}},
+{{/each}}
 }
 
 services.config = function(options){ 
