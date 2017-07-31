@@ -70,6 +70,7 @@ function createWebsite(websiteName, dest) {
 				'style-loader',
 				'webpack',
 				'webpack-dev-server',
+				'cross-env',
 				'--save-dev'
 			], dest)
 
