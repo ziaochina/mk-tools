@@ -6,7 +6,7 @@
 const config = ({ services }) => {
     Object.assign(server.services, services)
     configServices(server)
-    return current
+    return server
 }
 
 const server = {
