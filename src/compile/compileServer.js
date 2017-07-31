@@ -28,7 +28,7 @@ function internal() {
 						services.push({
 							name: serviceName,
 							path: absoultePath,
-							relaPath: path.relative(basePath, path.join(absoultePath, 'index.js'))
+							relaPath: path.relative(basePath, path.join(absoultePath, 'index.js')).replace(/\\/g, "/")
 						})
 					}
 

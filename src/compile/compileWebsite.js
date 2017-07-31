@@ -28,11 +28,11 @@ function internal() {
 						apps.push({
 							name: appName,
 							path: absoultePath,
-							relaIndexPath: path.relative(basePath, path.join(absoultePath, 'index.js')),
+							relaIndexPath: path.relative(basePath, path.join(absoultePath, 'index.js')).replace(/\\/g, "/"),
 							existsIndex: fs.existsSync(path.join(absoultePath, 'index.js')),
-							relaLessPath: path.relative(path.join(basePath, 'assets', 'styles'), path.join(absoultePath, 'style.less')),
+							relaLessPath: path.relative(path.join(basePath, 'assets', 'styles'), path.join(absoultePath, 'style.less')).replace(/\\/g, "/"),
 							existsLess: fs.existsSync(path.join(absoultePath, 'style.less')),
-							relaMockPath: path.relative(basePath, path.join(absoultePath, 'mock.js')),
+							relaMockPath: path.relative(basePath, path.join(absoultePath, 'mock.js')).replace(/\\/g, "/"),
 							existsMock: fs.existsSync(path.join(absoultePath, 'mock.js')),
 						})
 					}
