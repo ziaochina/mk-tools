@@ -25,7 +25,7 @@ const server = {
 function configServices(server) {
     var { services, configs } = server;
     Object.keys(services).filter(k => !!services[k].config).forEach(k => {
-        let curCfg = Object.assign({ server }, configs["*"], configs[k]);
+        let curCfg = Object.assign({ server, services }, configs["*"], configs[k]);
         services[k].config(curCfg);
     })
 }
