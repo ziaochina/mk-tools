@@ -2,12 +2,11 @@ import { config, start, componentFactory } from 'mk-meta-engine'
 import * as mkComponents from 'mk-component'
 import myConfig  from './config'
 {{each apps}}
-import {{$value.name}} from './{{$value.relaIndexPath}}'
-{{/each}}
+import {{$value.name}} from './{{$value.relaIndexPath}}'{{/each}}
+
 const apps = {
-{{each apps}}	
-	[{{$value.name}}.name]: {{$value.name}},
-{{/each}}
+	{{each apps}}	
+	[{{$value.name}}.name]: {{$value.name}},{{/each}}
 }
 
 apps.config = (options) => {

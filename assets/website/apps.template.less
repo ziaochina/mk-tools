@@ -1,5 +1,2 @@
-{{each apps}}
-{{if $value.existsLess}}
-@import '{{$value.relaLessPath}}';
-{{/if}}
-{{/each}}
+{{each apps}}{{if $value.existsLess}}
+@import '{{$value.relaLessPath}}';{{/if}}{{/each}}
