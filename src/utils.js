@@ -1,5 +1,7 @@
 import childProcess from 'child_process'
 import which from 'which'
+import fs from 'fs'
+import path from 'path'
 
 var npms = ['npm']
 
@@ -33,4 +35,12 @@ export async function runCmd(cmd, args, cwd) {
 
 export function trim(str) {
     return str.replace(/(^\s*)|(\s*$)/g, "");
+}
+
+export function writeFile(path, content) {
+	var exists = fs.existsSync(path)
+	if (exists) {
+		fs.unlinkSync(path)
+	}
+	fs.writeFileSync(path, content)
 }

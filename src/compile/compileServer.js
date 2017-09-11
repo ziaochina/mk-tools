@@ -23,7 +23,7 @@ function internal() {
 			if (stats.isFile()) {
 				if (filename === 'index.js') {
 					let content = fs.readFileSync(path.join(absoultePath, filename), 'utf-8')
-					if ( /name[ ]*:[ ]*[\'\"]([^\"\']+)[\'\"]/.test(content) && /api/.test(content) ) {
+					if (/name[ ]*:[ ]*[\'\"]([^\"\']+)[\'\"]/.test(content) && /api/.test(content)) {
 						let serviceName = content.match(/name[ ]*:[ ]*[\'\"]([^\"\']+)[\'\"]/)[1].replace(/[\/\.-]/g, '_')
 						services.push({
 							name: serviceName,
