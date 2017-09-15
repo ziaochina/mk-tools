@@ -42,7 +42,7 @@ program
 		if( typeof args[0] !== 'string' || (args[0] != 'website' &&  args[0] != 'server')){
 			console.log('请输入编译参数，website or server;例如mk compile website')
 		}else{
-			compile(args[0], ...args)
+			compile(args.shift(), ...args)
 		}
 	})
 

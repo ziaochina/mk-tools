@@ -45,7 +45,6 @@ function internal() {
 		path.join(basePath, 'index.js'),
 		template(join(__dirname, '../../assets/server/index.template.js'), { services })
 	)
-	console.log('OK!')
 }
 
 function writeFile(path, content) {

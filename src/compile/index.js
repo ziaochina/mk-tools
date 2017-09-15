@@ -12,7 +12,7 @@ export default function compile(who, options) {
 	if( who == 'server')
 		compileServer()
 
-	if(options.apidoc)
+	if(options.apidoc === true)
 		genDoc()
 
 	console.log('OK!')
