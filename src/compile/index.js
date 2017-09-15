@@ -5,12 +5,15 @@ import path from 'path'
 import apidoc from 'apidoc-core'
 
 
-export default function compile(who) {
+export default function compile(who, options) {
 	if( who == 'website')
 		compileWebsite()
 
 	if( who == 'server')
 		compileServer()
 
-	genDoc()
+	if(options.apidoc)
+		genDoc()
+
+	console.log('OK!')
 }

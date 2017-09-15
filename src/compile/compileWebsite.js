@@ -60,8 +60,6 @@ function internal() {
 		path.join(basePath, 'mock.js'),
 		template(join(__dirname, '../../assets/website/mock.template.js'), { apps })
 	)
-
-	console.log('OK!')
 }
 
 function writeFile(path, content) {
