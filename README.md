@@ -43,6 +43,7 @@ $ mk clone <app name//npmjs发布的App或者Service> <targetPath //目标路径
 
 ```
 $ mk compile <'website' or 'server' //编译网站或者服务>
+$ mk compile website --apidoc //可选参数apidoc，会扫描项目中符合apidoc规则的注释，并生成apiDoc.js文件
 ```
 
 
