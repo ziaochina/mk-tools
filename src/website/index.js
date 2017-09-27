@@ -42,8 +42,8 @@ function createWebsite(websiteName, dest) {
 
 			await runCmd(which.sync(npm), [
 				'install',
-				'react@15.6.1',
-				'react-dom@15.6.1',
+				'react',
+				'react-dom',
 				'mk-meta-engine',
 				'mk-component',
 				'mk-utils',
