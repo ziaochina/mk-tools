@@ -1,10 +1,8 @@
 import { Toast, Notification, Modal } from 'mk-component'
-import { fetch, history } from 'mk-utils'
+import { fetch } from 'mk-utils'
 import './mock.js' //脱离后台测试，启用mock，否则这行注释
 
 var _options = {}
-
-const hashHistory = history.createHashHistory()
 
 //配置fetch
 fetch.config({
@@ -27,10 +25,7 @@ function config(options) {
 
 	//对应用进行配置，key会被转换为'^<key>$'跟app名称正则匹配
 	_options.apps && _options.apps.config({
-		'*': {
-			history: hashHistory 
-			//webapi //正式网站应该有一个完整webapi对象，提供所有web请求函数
-		} 
+		//'*': {webapi} //正式网站应该有一个完整webapi对象，提供所有web请求函数
 	})
 
 	_options.targetDomId = 'app' //react render到目标dom
