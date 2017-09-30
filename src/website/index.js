@@ -64,6 +64,7 @@ function createWebsite(websiteName, dest) {
 				'babel-preset-stage-0',
 				'css-loader',
 				'file-loader',
+				'url-loader',
 				'html-webpack-plugin',
 				'less',
 				'less-loader',
