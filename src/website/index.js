@@ -66,7 +66,7 @@ function createWebsite(websiteName, dest) {
 				'file-loader',
 				'url-loader',
 				'html-webpack-plugin',
-				'less',
+				'less@2.7.2',
 				'less-loader',
 				'style-loader',
 				'webpack',
