@@ -22,9 +22,34 @@ export default async function cloneApp(appName, targetPath) {
         cp(o, p)
     })
 
+    installDependencies(apps)
+
     await runCmd(which.sync(npm), ['uninstall', ...apps], process.cwd())
 }
 
+async function installDependencies(apps){
+    var ret = []
+    apps.forEach(o=>{
+        var path = join(process.cwd(), 'node_modules', o, 'index.js')
+        const content = fs.readFileSync(path, 'utf-8')
+        const matched =  content.match(/dependencies[ ]*:[ ]*[\[]([^\]]+)[\]"]/)
+        
+        if(matched && matched.length > 1){
+            const deps = (new Function("return [" + matched[1] + "]"))()
+
+            deps.forEach(d=>{
+                
+                if(d.replace(/(^\s*)|(\s*$)/g, "") && ret.findIndex(a=>a == d) == -1)
+                    ret.push(d)
+            })
+        }
+    })
+
+    if(ret.length> 0){
+        var npm = findNpm()
+        await runCmd(which.sync(npm), ['install', ...ret, '--save'], process.cwd())
+    }
+}
 
 function cp(appName, targetPath) {
     var cwd = join(process.cwd(), 'node_modules', appName)
