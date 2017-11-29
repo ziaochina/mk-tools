@@ -55,7 +55,7 @@ function cp(appName, targetPath) {
     var cwd = join(process.cwd(), 'node_modules', appName)
     var dest = join(process.cwd(), targetPath)
 
-    vfs.src(['**/*', '!node_modules/**/*', '!*.md', '!*.npmignore', '!LICENSE', '!*.gitignore', '!package.json', '!webpack.config.js', !'.umd.js'],
+    vfs.src(['**/*', '!node_modules/**/*', '!*.md', '!*.npmignore', '!LICENSE', '!*.gitignore', '!package.json', '!webpack.config.js', '!*.umd.js'],
         { cwd: cwd, cwdbase: true, dot: true })
 
         .pipe(through.obj(function (file, enc, cb) {
