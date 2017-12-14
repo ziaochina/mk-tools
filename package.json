@@ -1,6 +1,6 @@
 {
   "name": "mk-tools",
-  "version": "1.0.59",
+  "version": "1.0.60",
   "description": "mk-tools",
   "bin": {
     "mk": "./bin/mk-tools"
@@ -22,12 +22,12 @@
   "homepage": "https://github.com/ziaochina/mk-tools#readme",
   "dependencies": {
     "apidoc-core": "^0.8.3",
-    "art-template": "^4.12.1",
+    "art-template": "^4.12.2",
     "babel-runtime": "^6.26.0",
-    "commander": "^2.11.0",
-    "mk-utils": "^1.0.22",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "commander": "^2.12.2",
+    "mk-utils": "^1.0.55",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
     "through2": "^2.0.3",
     "vinyl-fs": "^2.4.4",
     "which": "^1.2.14"
@@ -45,10 +45,10 @@
     "css-loader": "^0.28.7",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.29.0",
-    "less": "^2.7.2",
+    "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "style-loader": "^0.18.2",
-    "webpack": "^3.5.6",
-    "webpack-dev-server": "^2.7.1"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
   }
 }
