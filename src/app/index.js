@@ -71,7 +71,9 @@ export default function app(cmd, options) {
                     "less-loader",
                     "style-loader",
                     "url-loader",
-                    "webpack"
+                    "webpack",
+                    "webpack-dev-server",
+                    '--save-dev'
                 ], dest)
 
 
