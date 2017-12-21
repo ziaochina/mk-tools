@@ -57,8 +57,7 @@ function cp(appName, targetPath) {
 
     vfs.src(['**/*', '!node_modules/**/*', '!*.md', 
         '!*.npmignore', '!LICENSE', '!*.gitignore', 
-        '!package.json', !'package-lock.json',
-        '!webpack.config.js', '!*.umd.js',
+        '!package.json', '!webpack.config.js', '!*.umd.js',
         '!dist/**/*', '!*.babelrc'],
         { cwd: cwd, cwdbase: true, dot: true })
 
