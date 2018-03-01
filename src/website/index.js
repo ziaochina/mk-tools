@@ -40,8 +40,8 @@ function createWebsite(websiteName, dest) {
 
 			var npm = findNpm()
 
-			await runCmd(which.sync(npm), [
-				'install',
+			await runCmd('yarn', [
+				'add',
 				'react',
 				'react-dom',
 				'mk-meta-engine',
@@ -51,8 +51,8 @@ function createWebsite(websiteName, dest) {
 				'--save'
 			], dest)
 
-			await runCmd(which.sync(npm), [
-				'install',
+			await runCmd('yarn', [
+				'add',
 				'babel-cli',
 				'babel-core',
 				'babel-loader',
@@ -70,6 +70,7 @@ function createWebsite(websiteName, dest) {
 				'less-loader',
 				'style-loader',
 				'webpack',
+				"webpack-cli",
 				'webpack-dev-server',
 				'cross-env',
 				'--save-dev'

@@ -44,16 +44,16 @@ export default function app(cmd, options) {
 
                 var npm = findNpm()
 
-                await runCmd(which.sync(npm), [
-                    'install',
+                await runCmd('yarn', [
+                    'add',
                     'immutable',
                     'react',
                     'react-dom',
                     '--save'
                 ], dest)
 
-                await runCmd(which.sync(npm), [
-                    'install',
+                await runCmd('yarn', [
+                    'add',
                     "babel-cli",
                     "babel-core",
                     "babel-loader",
@@ -72,6 +72,7 @@ export default function app(cmd, options) {
                     "style-loader",
                     "url-loader",
                     "webpack",
+                    "webpack-cli",
                     "webpack-dev-server",
                     '--save-dev'
                 ], dest)

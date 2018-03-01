@@ -22,7 +22,7 @@ if (env === 'production' && compress) {
     )
 }
 
-plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor'))
+//plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor'))
 
 plugins.push(new HtmlWebpackPlugin({
     filename: './index.html', //生成的html存放路径，相对于 path

@@ -12,7 +12,7 @@ export default async function cloneApp(appName, targetPath) {
 
     var npm = findNpm()
     var apps = appName.split(',')
-    await runCmd(which.sync(npm), ['install', ...apps, '--save'], process.cwd())
+    await runCmd('yarn', ['add', ...apps, '--save'], process.cwd())
 
     apps.forEach(o => {
         let p = targetPath
@@ -24,7 +24,7 @@ export default async function cloneApp(appName, targetPath) {
 
     installDependencies(apps)
 
-    await runCmd(which.sync(npm), ['uninstall', ...apps], process.cwd())
+    await runCmd('yarn', ['remove', ...apps], process.cwd())
 }
 
 async function installDependencies(apps){
@@ -47,7 +47,7 @@ async function installDependencies(apps){
 
     if(ret.length> 0){
         var npm = findNpm()
-        await runCmd(which.sync(npm), ['install', ...ret, '--save'], process.cwd())
+        await runCmd('yarn', ['add', ...ret, '--save'], process.cwd())
     }
 }
 

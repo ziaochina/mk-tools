@@ -9,7 +9,7 @@ export function findNpm() {
 	for (var i = 0; i < npms.length; i++) {
 		try {
 			which.sync(npms[i])
-			console.log('use npm: ' + npms[i])
+			//console.log('use npm: ' + npms[i])
 			return npms[i]
 		} catch (e) {
 

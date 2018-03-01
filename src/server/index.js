@@ -40,7 +40,7 @@ function createServer(serverName, dest) {
 
             var npm = findNpm()
 
-            await runCmd(which.sync(npm), ['install', 'mk-server', '--save'], dest)
+            await runCmd('yarn', ['add', 'mk-server', '--save'], dest)
 
             console.log("OK!")
 
