@@ -74,7 +74,7 @@ export default function app(cmd, options) {
                     "webpack",
                     "webpack-cli",
                     "webpack-dev-server",
-                    '--save-dev'
+                    '--dev'
                 ], dest)
 
 
